@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+## Projet TETRIS en Reactjs et JS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ce référentiel contient une réplique du jeu tétris développé en ReactJS et JS
+L'objectif de ce projet était de créer une réplique du jeu populaire Tétris avec un score, les formes connues de tétris qui peuvent changer de sens, le niveau et le nombre de ligne à éliminer avant le prochain niveau
 
-## Available Scripts
+## Objectif initial
 
-In the project directory, you can run:
+L'objectif initial de ce projet était de créer un jeu fun en react.
 
-### `npm start`
+<!-- ## Structure du projet
+Le projet est organisé de la manière suivante :
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Un dossier `img` contient les images utilisées dans le site.
+- Le dossier `php/` contient les fichiers nécessaires pour la création, connexion et déconnection du site.
+- Le fichier `script.js` contient les fonctions pour faire fonctionner le carrousel.
+- Les fichiers `.php` contiennent les components + fonctionnalités du site -->
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Utilisation
 
-### `npm test`
+Pour utiliser ce projet, vous pouvez simplement cloner ce référentiel sur votre machine locale :
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<!-- https://github.com/Sushib08/clothes.git -->
 
-### `npm run build`
+Ensuite dans votre console de commande vous inscriver la commande :
+npm i
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Cela va installer toutes les dépendances et bibliothèques nécessaire pour ce projet.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Contribution
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Les contributions à ce projet ne sont pas actuellement acceptées, car il s'agit d'un projet personnel pour pouvoir évoluer sur mes compétences.
+Cependant, vous pouvez créer une branche (branch) à partir de ce référentiel et travailler sur votre propre version du projet.
 
-### `npm run eject`
+## Auteur
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Ce projet a été développé par Sushib08.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+N'hésitez pas à parcourir le code source et surtout à vous amuser sur le jeu de notre enfance !
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Profitez de votre expérience sur TETRIS !
