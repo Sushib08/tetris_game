@@ -2,7 +2,7 @@ import React from "react";
 import { Board } from "../components/Board";
 import GameStats from "../components/GameStats";
 import Previews from "../components/Previews";
-import { GameController } from "./GameController";
+import GameController from "./GameController";
 import "./styles/Tetris.css";
 
 // Hook

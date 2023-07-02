@@ -9,7 +9,7 @@ import { PlayerController } from "../target_project/PlayerController";
 import { useInterval } from "../hooks/useInterval";
 import { useDropTime } from "../hooks/useDropTime";
 
-export const GameController = ({
+const GameController = ({
   board,
   gameStats,
   player,
@@ -26,10 +26,7 @@ export const GameController = ({
 
   const onKeyUp = ({ code }) => {
     const action = actionForKey(code);
-
-    if (action === Action.Quit) {
-      setGameOver(true);
-    }
+    if (actionIsDrop(action)) resumeDropTime();
   };
 
   const onKeyDown = ({ code }) => {
@@ -45,6 +42,9 @@ export const GameController = ({
       setGameOver(true);
     } else {
       if (actionIsDrop(action)) pauseDropTime();
+      if (!dropTime) {
+        return;
+      }
       handleInput({ action });
     }
   };
@@ -69,3 +69,5 @@ export const GameController = ({
     />
   );
 };
+
+export default GameController;
