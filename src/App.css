@@ -9,6 +9,6 @@
   text-align: center;
   color: #fff;
   background-color: #50206c;
-  height: 100vh;
+  min-height: 100vh;
   padding: 20px;
 }
