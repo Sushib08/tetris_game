@@ -1,10 +1,8 @@
+/**
+ * Représente une cellule par défaut sur le plateau de jeu.
+ * Une cellule par défaut est une cellule non occupée sans classe associée.
+ */
 export const defaultCell = {
-  occupied: false,
-  className: "",
+  occupied: false, // Indique si la cellule est occupée (true) ou non (false)
+  className: "", // La classe CSS associée à la cellule
 };
-
-/*
-Configuration de notre cellule par défaut
-garder une trace de l'occupation ou non des cellules pour
-éviter les collisions.
-*/
