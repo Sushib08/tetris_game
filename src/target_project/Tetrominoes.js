@@ -1,5 +1,16 @@
-const className = "tetromino";
+/**
+ * Classe représentant les différentes formes de tétraminos.
+ *
+ * @typedef {Object} Tetromino
+ * @property {number[][]} shape - La forme du tétraminos représentée par une matrice de nombres.
+ * @property {string} className - La classe CSS correspondante pour le tétraminos.
+ */
 
+/**
+ * Classe représentant les différentes formes de tétraminos.
+ *
+ * @type {Object<string, Tetromino>}
+ */
 export const TETROMINOES = {
   I: {
     shape: [
@@ -8,7 +19,7 @@ export const TETROMINOES = {
       [0, 1, 0, 0],
       [0, 1, 0, 0],
     ],
-    className: `${className} ${className}__i`,
+    className: "tetromino tetromino__i",
   },
   J: {
     shape: [
@@ -16,7 +27,7 @@ export const TETROMINOES = {
       [0, 1, 0],
       [1, 1, 0],
     ],
-    className: `${className} ${className}__j`,
+    className: "tetromino tetromino__j",
   },
   L: {
     shape: [
@@ -24,14 +35,14 @@ export const TETROMINOES = {
       [0, 1, 0],
       [0, 1, 1],
     ],
-    className: `${className} ${className}__l`,
+    className: "tetromino tetromino__l",
   },
   O: {
     shape: [
       [1, 1],
       [1, 1],
     ],
-    className: `${className} ${className}__o`,
+    className: "tetromino tetromino__o",
   },
   S: {
     shape: [
@@ -39,7 +50,7 @@ export const TETROMINOES = {
       [1, 1, 0],
       [0, 0, 0],
     ],
-    className: `${className} ${className}__s`,
+    className: "tetromino tetromino__s",
   },
   T: {
     shape: [
@@ -47,7 +58,7 @@ export const TETROMINOES = {
       [0, 1, 0],
       [0, 0, 0],
     ],
-    className: `${className} ${className}__t`,
+    className: "tetromino tetromino__t",
   },
   Z: {
     shape: [
@@ -55,10 +66,15 @@ export const TETROMINOES = {
       [0, 1, 1],
       [0, 0, 0],
     ],
-    className: `${className} ${className}__z`,
+    className: "tetromino tetromino__z",
   },
 };
 
+/**
+ * Génère un tétraminos aléatoire.
+ *
+ * @returns {Tetromino} Un tétraminos aléatoire.
+ */
 export const randomTetromino = () => {
   const keys = Object.keys(TETROMINOES);
   const index = Math.floor(Math.random() * keys.length);
@@ -66,6 +82,14 @@ export const randomTetromino = () => {
   return TETROMINOES[key];
 };
 
+/**
+ * Effectue une rotation sur le tétraminos donné.
+ *
+ * @param {Object} params - Les paramètres de rotation.
+ * @param {Tetromino} params.piece - Le tétraminos à pivoter.
+ * @param {number} params.direction - La direction de rotation (-1 pour sens horaire, 1 pour sens anti-horaire).
+ * @returns {number[][]} La nouvelle forme du tétraminos après la rotation.
+ */
 export const rotate = ({ piece, direction }) => {
   // Transposer les lignes et les colonnes
   const newPiece = piece.map((_, index) =>
@@ -78,6 +102,17 @@ export const rotate = ({ piece, direction }) => {
   return newPiece.reverse();
 };
 
+/**
+ * Transfère le tétraminos sur le plateau de jeu.
+ *
+ * @param {Object} params - Les paramètres de transfert.
+ * @param {string} params.className - La classe CSS correspondante pour le tétraminos.
+ * @param {boolean} params.isOccupied - Indique si la case est occupée ou non.
+ * @param {Object} params.position - La position du tétraminos sur le plateau.
+ * @param {number[][]} params.rows - Les lignes du plateau de jeu.
+ * @param {number[][]} params.shape - La forme du tétraminos représentée par une matrice de nombres.
+ * @returns {number[][]} Les nouvelles lignes du plateau de jeu après le transfert du tétraminos.
+ */
 export const transferToBoard = ({
   className,
   isOccupied,

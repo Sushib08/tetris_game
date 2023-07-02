@@ -1,6 +1,17 @@
 import React from "react";
 import "./styles/GameStats.css";
 
+/**
+ * Composant représentant les statistiques de jeu du Tetris.
+ *
+ * @param {Object} props - Les propriétés du composant.
+ * @param {Object} props.gameStats - Les statistiques de jeu.
+ * @param {number} props.gameStats.level - Le niveau actuel du jeu.
+ * @param {number} props.gameStats.points - Le nombre de points.
+ * @param {number} props.gameStats.linesCompleted - Le nombre de lignes complétées.
+ * @param {number} props.gameStats.linesPerLevel - Le nombre de lignes requis pour passer au niveau suivant.
+ * @returns {JSX.Element} - L'élément des statistiques de jeu du Tetris.
+ */
 const GameStats = ({ gameStats }) => {
   const { level, points, linesCompleted, linesPerLevel } = gameStats;
   const linesToLevel = linesPerLevel - linesCompleted;

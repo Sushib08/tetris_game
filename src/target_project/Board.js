@@ -2,6 +2,14 @@ import { defaultCell } from "./Cell";
 import { movePlayer } from "./PlayerController";
 import { transferToBoard } from "./Tetrominoes";
 
+/**
+ * Construit un nouveau plateau de jeu vide avec les dimensions spécifiées.
+ *
+ * @param {Object} params - Les paramètres de construction du plateau.
+ * @param {number} params.rows - Le nombre de lignes du plateau.
+ * @param {number} params.columns - Le nombre de colonnes du plateau.
+ * @returns {Object} Le plateau de jeu construit.
+ */
 export const buildBoard = ({ rows, columns }) => {
   const builtRows = Array.from({ length: rows }, () =>
     Array.from({ length: columns }, () => ({ ...defaultCell }))
@@ -13,6 +21,15 @@ export const buildBoard = ({ rows, columns }) => {
   };
 };
 
+/**
+ * Trouve la position de chute pour une pièce donnée sur le plateau.
+ *
+ * @param {Object} params - Les paramètres de recherche de position de chute.
+ * @param {Object} params.board - Le plateau de jeu.
+ * @param {Object} params.position - La position initiale de la pièce.
+ * @param {number[][]} params.shape - La forme de la pièce.
+ * @returns {Object} La position de chute calculée.
+ */
 const findDropPosition = ({ board, position, shape }) => {
   let max = board.size.rows - position.row + 1;
   let row = 0;
@@ -32,23 +49,33 @@ const findDropPosition = ({ board, position, shape }) => {
   return { ...position, row };
 };
 
+/**
+ * Calcule le prochain état du plateau de jeu après le déplacement du joueur.
+ *
+ * @param {Object} params - Les paramètres du calcul de l'état du plateau.
+ * @param {Object} params.board - Le plateau de jeu actuel.
+ * @param {Object} params.player - Le joueur actuel.
+ * @param {Function} params.resetPlayer - La fonction de réinitialisation du joueur.
+ * @param {Function} params.addLinesCleared - La fonction d'ajout de lignes effacées.
+ * @returns {Object} Le prochain état du plateau de jeu.
+ */
 export const nextBoard = ({ board, player, resetPlayer, addLinesCleared }) => {
   const { tetromino, position } = player;
 
-  // Copy and clear spaces used by pieces that
-  // hadn't collided and occupied spaces permanently
+  // Copier et effacer les espaces utilisés par les pièces qui n'ont pas
+  // encore collisionné et les espaces occupés de manière permanente
   let rows = board.rows.map((row) =>
     row.map((cell) => (cell.occupied ? cell : { ...defaultCell }))
   );
 
-  // Drop position
+  // Position de chute
   const dropPosition = findDropPosition({
     board,
     position,
     shape: tetromino.shape,
   });
 
-  // Place ghost
+  // Placer le fantôme
   const className = `${tetromino.className} ${
     player.isFastDropping ? "" : "ghost"
   }`;
@@ -60,8 +87,8 @@ export const nextBoard = ({ board, player, resetPlayer, addLinesCleared }) => {
     shape: tetromino.shape,
   });
 
-  // Place the piece.
-  // If it collided, mark the board cells as collided
+  // Placer la pièce.
+  // Si elle entre en collision, marquer les cellules du plateau comme collisionnées
   if (!player.isFastDropping) {
     rows = transferToBoard({
       className: tetromino.className,
@@ -72,7 +99,7 @@ export const nextBoard = ({ board, player, resetPlayer, addLinesCleared }) => {
     });
   }
 
-  // Check for cleared lines
+  // Vérifier les lignes effacées
   const blankRow = rows[0].map((_) => ({ ...defaultCell }));
   let linesCleared = 0;
   rows = rows.reduce((acc, row) => {
@@ -90,18 +117,27 @@ export const nextBoard = ({ board, player, resetPlayer, addLinesCleared }) => {
     addLinesCleared(linesCleared);
   }
 
-  // If we collided, reset the player!
+  // Si nous avons collisionné, réinitialiser le joueur !
   if (player.collided || player.isFastDropping) {
     resetPlayer();
   }
 
-  // Return the next board
+  // Retourner le prochain plateau de jeu
   return {
     rows,
     size: { ...board.size },
   };
 };
 
+/**
+ * Vérifie s'il y a une collision entre une pièce et le plateau de jeu.
+ *
+ * @param {Object} params - Les paramètres de détection de collision.
+ * @param {Object} params.board - Le plateau de jeu.
+ * @param {Object} params.position - La position de la pièce.
+ * @param {number[][]} params.shape - La forme de la pièce.
+ * @returns {boolean} True s'il y a une collision, sinon False.
+ */
 export const hasCollision = ({ board, position, shape }) => {
   for (let y = 0; y < shape.length; y++) {
     const row = y + position.row;
@@ -124,6 +160,15 @@ export const hasCollision = ({ board, position, shape }) => {
   return false;
 };
 
+/**
+ * Vérifie si une position donnée est valide à l'intérieur du plateau de jeu.
+ *
+ * @param {Object} params - Les paramètres de vérification de la position.
+ * @param {Object} params.board - Le plateau de jeu.
+ * @param {Object} params.position - La position à vérifier.
+ * @param {number[][]} params.shape - La forme de la pièce.
+ * @returns {boolean} True si la position est valide, sinon False.
+ */
 export const isWithinBoard = ({ board, position, shape }) => {
   for (let y = 0; y < shape.length; y++) {
     const row = y + position.row;
