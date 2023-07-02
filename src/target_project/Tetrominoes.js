@@ -1,6 +1,3 @@
-/**
- * Définition des tétraminos, leurs formes et classes.
- */
 const className = "tetromino";
 
 export const TETROMINOES = {
@@ -62,10 +59,6 @@ export const TETROMINOES = {
   },
 };
 
-/**
- * Génère un tétraminos aléatoire.
- * @returns Un objet représentant un tétraminos avec une forme et une classe associée.
- */
 export const randomTetromino = () => {
   const keys = Object.keys(TETROMINOES);
   const index = Math.floor(Math.random() * keys.length);
@@ -73,12 +66,6 @@ export const randomTetromino = () => {
   return TETROMINOES[key];
 };
 
-/**
- * Effectue une rotation du tétraminos donné dans une direction donnée.
- * @param piece - Le tétraminos à faire pivoter.
- * @param direction - La direction de rotation : 1 pour rotation horaire, -1 pour rotation antihoraire.
- * @returns Le tétraminos après rotation.
- */
 export const rotate = ({ piece, direction }) => {
   // Transposer les lignes et les colonnes
   const newPiece = piece.map((_, index) =>
@@ -91,15 +78,6 @@ export const rotate = ({ piece, direction }) => {
   return newPiece.reverse();
 };
 
-/**
- * Transfère les cellules du tétraminos sur le plateau de jeu.
- * @param className - La classe associée au tétraminos.
- * @param isOccupied - Indique si les cellules sont occupées.
- * @param position - La position du tétraminos sur le plateau.
- * @param rows - Les lignes du plateau de jeu.
- * @param shape - La forme du tétraminos.
- * @returns Les lignes du plateau de jeu avec les cellules du tétraminos transférées.
- */
 export const transferToBoard = ({
   className,
   isOccupied,

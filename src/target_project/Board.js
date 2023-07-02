@@ -1,4 +1,5 @@
 import { defaultCell } from "./Cell";
+import { transferToBoard } from "./Tetrominoes";
 
 /**
  * Construit un plateau de jeu avec un nombre donné de lignes et de colonnes.
@@ -15,5 +16,26 @@ export const buildBoard = ({ rows, columns }) => {
   return {
     rows: buildRows, // Les lignes du plateau
     size: { rows, columns }, // La taille du plateau
+  };
+};
+
+export const nextBoard = ({ board, player, resetPlayer, addLinesCleared }) => {
+  const { tetromino, position } = player;
+
+  let rows = board.rows.map((row) =>
+    row.map((cell) => (cell.occupied ? cell : { ...defaultCell }))
+  );
+
+  rows = transferToBoard({
+    className: tetromino.className,
+    isOccupied: player.collided,
+    position,
+    rows,
+    shape: tetromino.shape,
+  });
+
+  return {
+    rows,
+    size: { ...board.size },
   };
 };
